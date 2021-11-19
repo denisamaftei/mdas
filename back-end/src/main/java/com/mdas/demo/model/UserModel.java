@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.SneakyThrows;
 
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import java.util.List;
 
@@ -20,7 +21,7 @@ public class UserModel {
     private String email;
     private String phone;
     private String password;
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY)
     private List<AdvertModel> advertList;
 
 

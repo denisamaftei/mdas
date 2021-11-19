@@ -8,10 +8,10 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.util.Assert;
 
 import java.util.ArrayList;
 import java.util.Optional;
@@ -22,20 +22,19 @@ class UserServiceTest {
 
     @Mock
     private UserRepository userRepository;
+    @InjectMocks
     private UserService userService;
     private UserModel userModel;
 
     @BeforeEach
     public void init() {
-        userService = new UserService(userRepository);
         userModel = new UserModel(1L, "Iarina Cristea", "cristeaiarina03@gmail.com", "0756039030", "IarinaCriste@10", new ArrayList<>());
-
     }
 
     @Test
     void addUser() {
         Mockito.when(userRepository.save(userModel)).thenReturn(userModel);
-        Assertions.assertEquals(userService.addUser(userModel),new UserDTO(userModel));
+        Assertions.assertEquals(userService.addUser(userModel), new UserDTO(userModel));
     }
 
     @Test
@@ -45,7 +44,7 @@ class UserServiceTest {
             userService.addUser(userModel);
         });
         String expectedMessage = "Invalid user format.";
-        Assertions.assertEquals(exception.getMessage(),expectedMessage);
+        Assertions.assertEquals(exception.getMessage(), expectedMessage);
     }
 
     @Test
@@ -55,7 +54,7 @@ class UserServiceTest {
             userService.addUser(userModel);
         });
         String expectedMessage = "Invalid user format.";
-        Assertions.assertEquals(exception.getMessage(),expectedMessage);
+        Assertions.assertEquals(exception.getMessage(), expectedMessage);
     }
 
     @Test
@@ -65,7 +64,7 @@ class UserServiceTest {
             userService.addUser(userModel);
         });
         String expectedMessage = "Invalid user format.";
-        Assertions.assertEquals(exception.getMessage(),expectedMessage);
+        Assertions.assertEquals(exception.getMessage(), expectedMessage);
     }
 
     @Test
@@ -75,20 +74,20 @@ class UserServiceTest {
             userService.addUser(userModel);
         });
         String expectedMessage = "Invalid user format.";
-        Assertions.assertEquals(exception.getMessage(),expectedMessage);
+        Assertions.assertEquals(exception.getMessage(), expectedMessage);
     }
 
     @Test
     void should_login_if_correct() {
-        Mockito.when(userRepository.findByEmailAndPassword(userModel.getEmail(),userModel.getPassword())).thenReturn(Optional.of(userModel));
-        UserDTO userDTO = userService.login(userModel.getEmail(),userModel.getPassword());
+        Mockito.when(userRepository.findByEmailAndPassword(userModel.getEmail(), userModel.getPassword())).thenReturn(Optional.of(userModel));
+        UserDTO userDTO = userService.login(userModel.getEmail(), userModel.getPassword());
         Assertions.assertEquals(userDTO, new UserDTO(userModel));
     }
 
     @Test
     void should_not_find_user_if_wrong() {
-        Mockito.when(userRepository.findByEmailAndPassword(userModel.getEmail(),userModel.getPassword())).thenReturn(Optional.empty());
-        Assertions.assertNull(userService.login(userModel.getEmail(),userModel.getPassword()));
+        Mockito.when(userRepository.findByEmailAndPassword(userModel.getEmail(), userModel.getPassword())).thenReturn(Optional.empty());
+        Assertions.assertNull(userService.login(userModel.getEmail(), userModel.getPassword()));
     }
 
 

@@ -10,7 +10,11 @@ public class AdvertModel {
 
     private Long id;
     private String title;
-    private String type;
+    private AdvertType type;
     private String description;
 
+    public enum AdvertType {
+        ADOPT,
+        CARE
+    }
 }
