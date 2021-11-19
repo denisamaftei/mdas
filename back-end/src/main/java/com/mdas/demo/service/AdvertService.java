@@ -42,4 +42,20 @@ public class AdvertService {
         userModel.getAdvertList().add(advertModel);
         userRepository.save(userModel);
     }
+
+    public List<AdvertModel> getByType(AdvertModel.AdvertType type){
+        return advertRepository.findAllByType(type);
+    }
+
+    @SneakyThrows
+    public void addOrRemoveFromFavoriteAdverts(Boolean isAdding, Long userId, Long advertId) {
+        UserModel userModel = userRepository.findById(userId).orElseThrow(UserNotFoundException::new);
+        AdvertModel advertModel = advertRepository.findById(advertId).orElseThrow(NullPointerException::new);
+        if (isAdding) {
+            userModel.getFavoriteAdvertList().add(advertModel);
+        } else {
+            userModel.getFavoriteAdvertList().remove(advertModel);
+        }
+        userRepository.save(userModel);
+    }
 }

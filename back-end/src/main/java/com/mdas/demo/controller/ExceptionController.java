@@ -6,6 +6,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+import java.nio.file.AccessDeniedException;
+
 @ControllerAdvice
 public class ExceptionController {
 
@@ -14,9 +16,16 @@ public class ExceptionController {
         return HttpStatus.BAD_REQUEST;
     }
 
-    @ExceptionHandler(value = {UserNotFoundException.class})
+    @ExceptionHandler(value = {UserNotFoundException.class, NullPointerException.class})
     public HttpStatus handleUserException() {
         return HttpStatus.NOT_FOUND;
     }
+
+    @ExceptionHandler(value = {AccessDeniedException.class})
+    public HttpStatus handleUserAccess() {
+        return HttpStatus.FORBIDDEN;
+    }
+
+
 
 }

@@ -22,4 +22,11 @@ public class UserController {
         userService.addUser(userBody);
         return HttpStatus.CREATED;
     }
+
+    @PostMapping(value = "/login")
+    public UserDTO login(@RequestBody AuthDTO auth) {
+         UserDTO userDTO = userService.login(auth.getEmail(), auth.getPassword());
+         return userDTO;
+    }
+
 }
