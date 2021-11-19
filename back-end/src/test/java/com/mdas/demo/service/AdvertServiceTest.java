@@ -14,6 +14,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -79,7 +80,7 @@ class AdvertServiceTest {
     }
 
     private AdvertModel getMockedAdvert() {
-        return new AdvertModel(1L, "title", AdvertModel.AdvertType.ADOPT, "description");
+        return new AdvertModel(1L, "title", AdvertModel.AdvertType.ADOPT, "description","location", LocalDateTime.now());
     }
 
 }

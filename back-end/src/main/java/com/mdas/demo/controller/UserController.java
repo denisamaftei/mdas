@@ -2,11 +2,13 @@ package com.mdas.demo.controller;
 
 import com.mdas.demo.model.UserModel;
 import com.mdas.demo.service.UserService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import com.mdas.demo.service.dto.UserDTO;
+import com.mdas.demo.service.dto.AuthDTO;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping(value = "user")
 public class UserController {
 
     private final UserService userService;
@@ -15,8 +17,9 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping
-    public void createUser(@RequestBody UserModel userBody) {
-
+    @PostMapping(value = "/create")
+    public HttpStatus createUser(@RequestBody UserModel userBody) {
+        userService.addUser(userBody);
+        return HttpStatus.CREATED;
     }
 }
