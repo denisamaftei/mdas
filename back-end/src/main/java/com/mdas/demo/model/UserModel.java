@@ -29,7 +29,7 @@ public class UserModel {
     @ManyToMany
     private List<AdvertModel> favoriteAdvertList;
 
-    public UserModel(Long id, String name, String email, String password, String phone, List<AdvertModel> advertList) {
+    public UserModel(Long id, String name, String email, String phone, String password, List<AdvertModel> advertList) {
     this.id = id;
     this.name = name;
     this.email = email;

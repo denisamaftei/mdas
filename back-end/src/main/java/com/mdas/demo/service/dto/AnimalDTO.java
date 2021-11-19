@@ -15,16 +15,12 @@ public class AnimalDTO {
     private String tip;
     private String rasa;
     private int varsta;
-    private String location;
-    private LocalDateTime postTime;
 
     public AnimalDTO(AnimalModel model){
         this.nume = model.getNume();
         this.tip = model.getTip();
         this.rasa = model.getRasa();
         this.varsta = model.getVarsta();
-        this.location = model.getLocation();
-        this.postTime = model.getPostTime();
     }
 
 }

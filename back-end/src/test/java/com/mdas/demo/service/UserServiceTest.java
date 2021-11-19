@@ -13,6 +13,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.nio.file.AccessDeniedException;
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -87,7 +88,11 @@ class UserServiceTest {
     @Test
     void should_not_find_user_if_wrong() {
         Mockito.when(userRepository.findByEmailAndPassword(userModel.getEmail(), userModel.getPassword())).thenReturn(Optional.empty());
-        Assertions.assertNull(userService.login(userModel.getEmail(), userModel.getPassword()));
+        Exception exception = Assertions.assertThrows(AccessDeniedException.class, () -> {
+            userService.login(userModel.getEmail(), userModel.getPassword());
+        });
+        String expectedMessage = "Access denied";
+        Assertions.assertEquals(exception.getMessage(), expectedMessage);
     }
 
 
