@@ -5,9 +5,11 @@ import com.mdas.demo.repository.AnimalRepository;
 import com.mdas.demo.service.dto.AnimalDTO;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -16,6 +18,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+@ExtendWith(MockitoExtension.class)
 public class AnimalServiceTest {
     @Mock
     private AnimalRepository animalRepository;
@@ -47,7 +50,7 @@ public class AnimalServiceTest {
         AnimalModel animalModel = getMockedAnimal();
         animalModel.setNume("Ralph");
         animalModel.setRasa("Amstaff");
-        Mockito.when(animalRepository.save(animalModel)).thenReturn(animalModel);
+        Mockito.when(animalRepository.save(animalModel)).thenReturn(Mockito.any());
         Assertions.assertEquals(animalService.updateAnimal(animalModel), new AnimalDTO(animalModel));
     }
 
