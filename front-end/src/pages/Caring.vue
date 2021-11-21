@@ -2,18 +2,16 @@
   <q-page>
     <SearchBar></SearchBar>
     <div class="row justify-center q-gutter-sm">
-      <q-intersection
-        transition="scale"
-        class="example-item"
-        @click.native="handleClick"
-      >
+      <q-intersection transition="scale" class="example-item">
         <q-card>
           <img
             src="https://idsb.tmgrup.com.tr/ly/uploads/images/2020/08/19/52894.jpg"
           />
 
           <q-card-section>
-            <div class="text-h6">Plimbare Câine</div>
+            <div class="text-h6">
+              Plimbare Câine <i class="heart favorite fas fa-heart" />
+            </div>
             <div class="text-subtitle3">15 RON/oră</div>
             <div class="text-subtitle3">Cluj-Napoca</div>
             <div class="text-subtitle3">Acum 2 ore</div>
@@ -27,7 +25,9 @@
           />
 
           <q-card-section>
-            <div class="text-h6">Spălare Animal</div>
+            <div class="text-h6">
+              Spălare Animal<i class="heart no-favorite far fa-heart" />
+            </div>
             <div class="text-subtitle3">25-50 RON/spălare</div>
             <div class="text-subtitle3">București</div>
             <div class="text-subtitle3">Ieri</div>
@@ -41,7 +41,9 @@
           />
 
           <q-card-section>
-            <div class="text-h6">Îngrijire Animal</div>
+            <div class="text-h6">
+              Îngrijire Animal<i class="heart no-favorite far fa-heart" />
+            </div>
             <div class="text-subtitle3">65 RON/zi</div>
             <div class="text-subtitle3">Constanța</div>
             <div class="text-subtitle3">13 noiembrie</div>
@@ -55,7 +57,9 @@
           />
 
           <q-card-section>
-            <div class="text-h6">Cazare Animal</div>
+            <div class="text-h6">
+              Cazare Animal <i class="heart favorite fas fa-heart" />
+            </div>
             <div class="text-subtitle3">90 RON/noapte</div>
             <div class="text-subtitle3">Brașov</div>
             <div class="text-subtitle3">3 noiembrie</div>
@@ -69,7 +73,9 @@
           />
 
           <q-card-section>
-            <div class="text-h6">Cazare Animal</div>
+            <div class="text-h6">
+              Cazare Animal<i class="heart no-favorite far fa-heart" />
+            </div>
             <div class="text-subtitle3">80 RON/noapte</div>
             <div class="text-subtitle3">Iași</div>
             <div class="text-subtitle3">1 noiembrie</div>
@@ -83,7 +89,9 @@
           />
 
           <q-card-section>
-            <div class="text-h6">Plimbare Câini</div>
+            <div class="text-h6">
+              Plimbare Câini<i class="heart no-favorite far fa-heart" />
+            </div>
             <div class="text-subtitle3">25 RON/oră</div>
             <div class="text-subtitle3">București</div>
             <div class="text-subtitle3">26 octombrie</div>

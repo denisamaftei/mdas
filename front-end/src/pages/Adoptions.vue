@@ -3,9 +3,8 @@
     <SearchBar></SearchBar>
     <div class="row justify-center q-gutter-sm">
       <q-intersection
-        v-for="advert in adverts"
-        :key="advert.id"
         transition="scale"
+        @click.native="handleClick"
         class="example-item"
       >
         <q-card onClick="handleClick">
@@ -23,7 +22,7 @@
           </q-card-section>
         </q-card>
       </q-intersection>
-      <!-- <q-intersection transition="scale" class="example-item">
+      <q-intersection transition="scale" class="example-item">
         <q-card>
           <img
             src="https://i.cbc.ca/1.5256404.1566499707!/fileImage/httpImage/image.jpg_gen/derivatives/16x9_940/cat-behaviour.jpg"
@@ -46,7 +45,9 @@
           />
 
           <q-card-section>
-            <div class="text-h6">Adopție Papagal</div>
+            <div class="text-h6">
+              Adopție Papagal <i class="heart no-favorite far fa-heart" />
+            </div>
             <div class="text-subtitle3">1 an</div>
             <div class="text-subtitle3">Constanța</div>
             <div class="text-subtitle3">Acum o săptămână</div>
@@ -60,7 +61,9 @@
           />
 
           <q-card-section>
-            <div class="text-h6">Adopție Iepure</div>
+            <div class="text-h6">
+              Adopție Iepure <i class="heart no-favorite far fa-heart" />
+            </div>
             <div class="text-subtitle3">2 săptămâni</div>
             <div class="text-subtitle3">Iași</div>
             <div class="text-subtitle3">7 noiembrie</div>
@@ -72,7 +75,9 @@
           <img src="https://i.ytimg.com/vi/eUWFd28mfxk/maxresdefault.jpg" />
 
           <q-card-section>
-            <div class="text-h6">Adopție Pești</div>
+            <div class="text-h6">
+              Adopție Pești <i class="heart favorite fas fa-heart" />
+            </div>
             <div class="text-subtitle3">3 luni</div>
             <div class="text-subtitle3">Sibiu</div>
             <div class="text-subtitle3">2 noiembrie</div>
@@ -86,13 +91,15 @@
           />
 
           <q-card-section>
-            <div class="text-h6">Adopție Țestoasă</div>
+            <div class="text-h6">
+              Adopție Țestoasă <i class="heart no-favorite far fa-heart" />
+            </div>
             <div class="text-subtitle3">O lună</div>
             <div class="text-subtitle3">Giurgiu</div>
             <div class="text-subtitle3">30 octombrie</div>
           </q-card-section>
         </q-card>
-      </q-intersection> -->
+      </q-intersection>
     </div>
 
     <!-- <AdContainer @click.native="handleClick"></AdContainer> -->
@@ -118,11 +125,35 @@ export default {
       adverts: [],
     };
   },
-  // created() {
-  //   this.$store.dispatch("getAll").then((response) => {
-  //     this.adverts = response.data;
-  //   });
-  // },
+  beforeMount() {
+    this.$store.dispatch("advertsData/getAdvert");
+  },
+  computed: {
+    id() {
+      return this.$store.getters["advertsData/getId"];
+    },
+    title() {
+      return this.$store.getters["advertsData/getTitle"];
+    },
+    type() {
+      return this.$store.getters["advertsData/getType"];
+    },
+    description() {
+      return this.$store.getters["advertsData/getDescription"];
+    },
+    location() {
+      return this.$store.getters["advertsData/getLocation"];
+    },
+    postTime() {
+      return this.$store.getters["advertsData/getPostTime"];
+    },
+    price() {
+      return this.$store.getters["advertsData/getPrice"];
+    },
+    animal() {
+      return this.$store.getters["advertsData/getAnimal"];
+    },
+  },
 };
 </script>
 <style>
@@ -146,6 +177,6 @@ export default {
 
 .heart {
   color: #f6b042;
-  margin-left: 20px;
+  margin-left: 30px;
 }
 </style>

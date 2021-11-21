@@ -105,13 +105,13 @@ export default {
 <style lang="scss" scoped>
 .publish-ad-header {
   font-size: 10vw;
-  margin-top: 5vh;
-  margin-bottom: 5vh;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
   font-weight: 800;
   font-family: cardo, Arial, Helvetica, sans-serif;
 }
 .ad-info {
-  margin-top: 5vh;
+  margin-top: 2vh;
 }
 .q-uploader {
   width: initial;

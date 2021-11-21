@@ -96,13 +96,10 @@ export default {
   width: 100%;
   object-fit: cover;
   height: 30vh;
-  border-bottom-left-radius: 10%;
-  border-bottom-right-radius: 10%;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
 }
-.user-avatar {
-  /* height: 2em;
-  width: 2em; */
-}
+
 .icons,
 .panel-text {
   display: inline;
@@ -111,6 +108,7 @@ export default {
   display: flex;
   flex-direction: column;
   margin-left: 15vw;
+  margin-top: 5vh;
 }
 .icons {
   padding-top: 0.5vh;
