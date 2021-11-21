@@ -1,13 +1,15 @@
 package com.mdas.demo.model;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.Hibernate;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.time.LocalDateTime;
 import java.util.Objects;
 
 @AllArgsConstructor
@@ -24,10 +26,20 @@ public class AnimalModel {
     private String tip;
     private String rasa;
     private int varsta;
+    private boolean adoptionStatus;
 
 
     //NEEDED FOR JPA
     protected AnimalModel() {
+    }
+
+    public AnimalModel(Long id, String nume, String tip, String rasa, int varsta) {
+        this.id = id;
+        this.nume = nume;
+        this.tip = tip;
+        this.rasa = rasa;
+        this.varsta = varsta;
+        this.adoptionStatus = false;
     }
 
     @Override
@@ -41,5 +53,9 @@ public class AnimalModel {
     @Override
     public int hashCode() {
         return getClass().hashCode();
+    }
+
+    public boolean getAdoptionStatus() {
+        return this.adoptionStatus;
     }
 }
